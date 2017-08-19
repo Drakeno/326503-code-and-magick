@@ -15,13 +15,11 @@ window.renderStatistics = function (ctx, names, times) {
   ctx.fillText('Список результатов:', 120, 60);
 
   var max = -1;
-  var maxIndex = -1;
 
   for (var i = 0; i < times.length; i++) {
     var time = times[i];
     if (time > max) {
       max = time;
-      maxIndex = i;
     }
   }
 
@@ -31,7 +29,6 @@ window.renderStatistics = function (ctx, names, times) {
   var indent = 90;
   var initialX = 150;
   var initialY = 120;
-  var opacit = Math.random();
 
   for (var a = 0; a < times.length; a++) {
     if (names[a] === 'Вы') {
