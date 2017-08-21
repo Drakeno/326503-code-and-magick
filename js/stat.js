@@ -14,34 +14,26 @@ window.renderStatistics = function (ctx, names, times) {
   ctx.fillText('Ура, вы победили!', 120, 40);
   ctx.fillText('Список результатов:', 120, 60);
 
-  var max = -1;
-
-  for (var i = 0; i < times.length; i++) {
-    var time = times[i];
-    if (time > max) {
-      max = time;
-    }
-  }
-
+  var max = Math.max.apply(null, times);
   var histogramHeight = 150;
   var step = histogramHeight / (max - 0);
   var barWidth = 40;
   var indent = 90;
   var initialX = 150;
   var initialY = 120;
+  var playerColor;
 
-  for (var a = 0; a < times.length; a++) {
-    if (names[a] === 'Вы') {
-      ctx.globalAlpha = 1.0;
-      ctx.fillStyle = 'rgb(255, 0, 0)';
+  for (var j = 0; j < times.length; j++) {
+    if (names[j] === 'Вы') {
+      playerColor = 'rgba(255, 0, 0, 1)';
     } else {
-      ctx.globalAlpha = Math.random();
-      ctx.fillStyle = 'rgb(0, 0, 255)';
+      playerColor = 'rgba(0, 0, 255,' + Math.random() + ')';
     }
-    ctx.fillRect(initialX + indent * a, 130 + initialY - times[a] * step, barWidth, times[a] * step);
+
+    ctx.fillStyle = playerColor;
+    ctx.fillRect(initialX + indent * j, 130 + initialY - times[j] * step, barWidth, times[j] * step);
     ctx.fillStyle = '#000';
-    ctx.globalAlpha = 1.0;
-    ctx.fillText(names[a], initialX + indent * a, initialY + histogramHeight);
-    ctx.fillText(Math.round(times[a]), initialX + indent * a, 120 + initialY - times[a] * step);
+    ctx.fillText(names[j], initialX + indent * j, initialY + histogramHeight);
+    ctx.fillText(Math.round(times[j]), initialX + indent * j, 120 + initialY - times[j] * step);
   }
 };
