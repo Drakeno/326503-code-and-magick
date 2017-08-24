@@ -17,11 +17,6 @@ function randomInteger(min, max) {
   return rand;
 }
 
-var wizardRandName = WIZARD_NAMES[randomInteger(0, 7)];
-var wizardRandSecName = WIZARD_SECOND_NAMES[randomInteger(0, 7)];
-var coatColor = WIZARD_COAT_COLORS[randomInteger(0, 5)];
-var eyesColor = WIZARD_EYES_COLORS[randomInteger(0, 4)];
-
 var wizards = [
   {
     name: WIZARD_NAMES[randomInteger(0, 7)] + ' ' + WIZARD_SECOND_NAMES[randomInteger(0, 7)],
@@ -53,7 +48,7 @@ var renderWizard = function (wizard) {
   wizardElement.querySelector('.wizard-eyes').style.fill = wizard.eyesColor;
 
   return wizardElement;
-}
+};
 
 var fragment = document.createDocumentFragment();
 for (var i = 0; i < wizards.length; i++) {
