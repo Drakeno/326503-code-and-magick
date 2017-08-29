@@ -24,7 +24,7 @@ var mainWizardEyesColor = mainWizardSetup.querySelector('.wizard-eyes');
 
 // Закрытие окна на ESC + проверка фокуса
 var onPopupEscPress = function (evt) {
-  if (evt.keyCode === ESC_KEYCODE && userNameInput.classList.contains('focused') === false) {
+  if (evt.keyCode === ESC_KEYCODE && !userNameInput.classList.contains('focused')) {
     closePopup();
   }
 };
